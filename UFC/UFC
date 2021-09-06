@@ -1,0 +1,104 @@
+class Fighter:
+
+    def __init__(self, name, nationality, age, height, weight, wins, loss, tie):
+        self.__name = name
+        self.__nationality = nationality
+        self.__age = age
+        self.__height = height
+        self.__category = ''
+        self.__weight = weight
+        self.__wins = wins
+        self.__loss = loss
+        self.__tie = tie
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        self.__name = name
+
+    @property
+    def nationality(self):
+        return self.__nationality
+
+    @property
+    def age(self):
+        return self.__age
+
+    @age.setter
+    def age(self, age):
+        self.__age = age
+
+    @property
+    def height(self):
+        return self.__height
+
+    @height.setter
+    def height(self, height):
+        self.__height = height
+
+    @property
+    def weight(self):
+        return self.__weight
+
+    @weight.setter
+    def weight(self, weight):
+        self.__weight = weight
+        if weight < 52:
+            self.__category = 'Invalid'
+        elif weight <= 70:
+            self.__category = 'Light'
+        elif weight <= 83.9:
+            self.__category = 'Medium'
+        elif weight <= 120:
+            self.__category = 'Heavy'
+        else:
+            self.__category = 'Invalid'
+
+    @property
+    def category(self):
+        return self.__category
+
+    @property
+    def wins(self):
+        return self.__wins
+
+    @property
+    def loss(self):
+        return self.__loss
+
+    @property
+    def tie(self):
+        return self.__tie
+
+# methods
+    def introduce(self):
+        print(f'Name: {self.__name}\nAge: {self.__age}\nHeight: {self.__height}\nWeight: {self.__weight}')
+        print(f'Wins: {self.__wins}\nLoss: {self.__loss}\nTie: {self.__tie}')
+
+    def status(self):
+        print(f'Name: {self.__name}')
+        print('Fights:', self.__wins + self.__loss + self.__tie)
+        print(f'Wins: {self.__wins}')
+        print(f'Loss: {self.__loss}')
+        print(f'Tie: {self.__tie}')
+
+    def winFight(self):
+        self.__wins += 1
+
+    def loseFight(self):
+        self.__wins -= 1
+
+    def tieFight(self):
+        self.__tie += 1
+
+
+class Fight:
+    pass
+
+
+fighter1 = Fighter('Jose Aldo', 'Brazilian', 31, 1.75, 68.9, 11, 2, 1)
+fighter2 = Fighter('Connor', 'Irish', 35, 1.78, 67.5, 9, 0, 3)
+fighter1.status()
