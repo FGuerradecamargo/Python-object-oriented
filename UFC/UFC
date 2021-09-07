@@ -46,6 +46,10 @@ class Fighter:
     @weight.setter
     def weight(self, weight):
         self.__weight = weight
+
+    @property
+    def category(self):
+        self.__weight = weight
         if weight < 52:
             self.__category = 'Invalid'
         elif weight <= 70:
@@ -56,9 +60,6 @@ class Fighter:
             self.__category = 'Heavy'
         else:
             self.__category = 'Invalid'
-
-    @property
-    def category(self):
         return self.__category
 
     @property
