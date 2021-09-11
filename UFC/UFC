@@ -49,14 +49,13 @@ class Fighter:
 
     @property
     def category(self):
-        self.__weight = weight
-        if weight < 52:
+        if self.__weight < 52:
             self.__category = 'Invalid'
-        elif weight <= 70:
+        elif self.__weight <= 70:
             self.__category = 'Light'
-        elif weight <= 83.9:
+        elif self.__weight <= 83.9:
             self.__category = 'Medium'
-        elif weight <= 120:
+        elif self.__weight <= 120:
             self.__category = 'Heavy'
         else:
             self.__category = 'Invalid'
@@ -97,9 +96,32 @@ class Fighter:
 
 
 class Fight:
-    pass
+    def __init__(self, challenged: Fighter, challenging: Fighter, rounds: int):
+        self.challenged = challenged
+        self.challenging = challenging
+        self.rounds = rounds
+        self.approved = False
+
+    def setFight(self):
+        different_fighter = False
+        same_category = False
+        if self.challenged != self.challenging:
+            different_fighter = True
+        else:
+            return 'Not Approved! Same Fighter!'
+        if self.challenged.category == self.challenging.category:
+            same_category = True
+        else:
+            return 'Not Approved! Different Category!'
+        if different_fighter and same_category is True:
+            self.approved = True
+            return 'Fight Approved!'
+
+    def fight(self):
+        pass
 
 
-fighter1 = Fighter('Jose Aldo', 'Brazilian', 31, 1.75, 68.9, 11, 2, 1)
-fighter2 = Fighter('Connor', 'Irish', 35, 1.78, 67.5, 9, 0, 3)
-fighter1.status()
+f1 = Fighter('Jose Aldo', 'Brazilian', 31, 1.75, 68.9, 11, 2, 1)
+f2 = Fighter('Connor', 'Irish', 35, 1.78, 67.5, 9, 0, 3)
+fight = Fight(f1, f2, 2)
+print(fight.setFight())
